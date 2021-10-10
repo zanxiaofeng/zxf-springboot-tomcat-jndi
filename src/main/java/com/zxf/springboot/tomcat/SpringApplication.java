@@ -9,20 +9,19 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 public class SpringApplication {
-	@Autowired
-	private DataSource myJndiDataSource;
+    @Autowired
+    private DataSource myJndiDataSource;
 
+    public static void main(String[] args) {
+        org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
+    }
 
-	public static void main(String[] args) {
-		org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
-	}
-
-	@PostConstruct
-	private void initDatabase() {
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(myJndiDataSource);
-		jdbcTemplate.execute("drop table employees if exists");
-		jdbcTemplate.execute("create table employees(id serial, name varchar(255), surname varchar(255))");
-		jdbcTemplate.execute("insert into employees(name, surname) values('Jan', 'Kowalski')");
-		jdbcTemplate.execute("insert into employees(name, surname) values('Stefan', 'Nowak')");
-	}
+    @PostConstruct
+    private void initDatabase() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(myJndiDataSource);
+        jdbcTemplate.execute("drop table employees if exists");
+        jdbcTemplate.execute("create table employees(id serial, name varchar(255), surname varchar(255))");
+        jdbcTemplate.execute("insert into employees(name, surname) values('Jan', 'Kowalski')");
+        jdbcTemplate.execute("insert into employees(name, surname) values('Stefan', 'Nowak')");
+    }
 }

@@ -38,7 +38,7 @@ public class EmployeeController {
     @GetMapping("/byOriginal")
     public List<Map<String, String>> myJndiDataSourceByOriginal() throws NamingException {
         Context context = new InitialContext();
-        DataSource dataSource = (DataSource)context.lookup("java:comp/env/jdbc/myJndiDataSource");
+        DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/myJndiDataSource");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         return queryData(jdbcTemplate);
     }
@@ -47,7 +47,7 @@ public class EmployeeController {
         List<Map<String, String>> employees = jdbcTemplate.query("select * from employees", new RowMapper<Map<String, String>>() {
             @Override
             public Map<String, String> mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Map<String,String> result = new HashMap<>();
+                Map<String, String> result = new HashMap<>();
                 result.put("id", rs.getString("id"));
                 result.put("name", rs.getString("name"));
                 result.put("surname", rs.getString("surname"));
