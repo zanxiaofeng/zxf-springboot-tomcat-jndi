@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.5</version>
+		<version>3.5.11</version>
 		<relativePath/>
 	</parent>
 
@@ -16,7 +16,7 @@
 	<name>zxf-springboot-tomcat-jndi</name>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>21</java.version>
 	</properties>
 
 
